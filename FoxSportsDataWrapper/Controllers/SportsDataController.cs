@@ -120,7 +120,8 @@ namespace FoxSportsDataWrapper.Controllers
                     HttpResponseMessage GameOver_RidesResponse = await GameOver_Rides.GetAsync(ConfigurationSettings.AppSettings["DataHiveUrl"] + @"results/" + league + "/overrides?id=" + hiveId);
                     if (GameOver_RidesResponse.IsSuccessStatusCode)
                     {
-                        var Over = JsonConvert.DeserializeObject<Overrides_main>(results_responseBody);
+                        string results_responseBody_Override = await GameOver_RidesResponse.Content.ReadAsStringAsync();
+                        var Over = JsonConvert.DeserializeObject<Overrides_main>(results_responseBody_Override);
                         a.Clock = Over.Model.Clock;
                         a.DateTimeUtc = Over.Model.DateTimeUtc;
                         a.HomeWins = Over.Model.HomeWins;
@@ -201,10 +202,95 @@ namespace FoxSportsDataWrapper.Controllers
 
         [HttpGet]
         [Route("api/SportsData/v1/Events/{SportType}/{LeagueCode}/{GameID}")]
-        public async Task<dynamic> Get(string SportType, string LeagueCode, int GameID,int ClientID,int PlaylistID,int PlaylistGroupID)
+        public async Task<dynamic> Get(string SportType, string LeagueCode, string GameID,int ClientID,int PlaylistID,int PlaylistGroupID)
         {
+            HttpClient reuslts_CID = new HttpClient();
+            HttpResponseMessage results_response_CID = await reuslts_CID.GetAsync(ConfigurationSettings.AppSettings["DataHiveUrl"] + @"results/" + LeagueCode + "/" + GameID);
+            if (results_response_CID.IsSuccessStatusCode)
+            {
+                string Get_results = await results_response_CID.Content.ReadAsStringAsync();
+                var SingleGame_objs = JsonConvert.DeserializeObject<GameData>(Get_results);
+                Events SingleEvents = new Events();
+                SingleEvents.ID = GameID;
 
-            //string fullname1 = Request["fullname"];
+
+                int doubleheader;
+                var FinalResult = " ";
+                var datetime = SingleGame_objs.DateTimeUtc;
+                var timeUtc = Convert.ToDateTime(datetime); ;
+                TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+                DateTime easternTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, easternZone);
+
+                string date = easternTime.ToString("yyyyMMdd");
+
+                var visit = SingleGame_objs.VisitorTeamAlias == null ? "null" : SingleGame_objs.VisitorTeamAlias;
+                var home = SingleGame_objs.HomeTeamAlias == null ? "null" : SingleGame_objs.HomeTeamAlias;
+                var leagues = SingleGame_objs.League;
+                if (SingleGame_objs.League.ToUpper() == "MLB")
+                {
+                    doubleheader = SingleGame_objs.DoubleHeaderGameNumber;
+                    FinalResult = date + "_" + leagues + "_" + home + "_" + visit + "_" + doubleheader;
+                }
+                else
+                {
+
+                    FinalResult = date + "_" + leagues + "_" + home + "_" + visit;
+                }
+                var GameNotesList = db.GameHiveNotes.Where(ab => ab.GameDetails == FinalResult && ab.ClientID == ClientID).ToList();
+                foreach (GameHiveNote abc in GameNotesList)
+                {
+                    SingleGame_objs.Notes.Add(new Notes { Enabled = true, HeaderImage = null, HeaderText = null, HeaderTextBGColor = null, ID = abc.ID, NoteText = abc.Note });
+                }
+                SingleEvents.EventData = SingleGame_objs;
+
+                return Json(SingleEvents);
+
+
+            }
+            else {
+                HttpClient Schedule_CID = new HttpClient();
+                HttpResponseMessage Schedule_response = await Schedule_CID.GetAsync(ConfigurationSettings.AppSettings["DataHiveUrl"] + "@schedules/" + LeagueCode + "/" + GameID);
+
+                if (Schedule_response.IsSuccessStatusCode) {
+
+                    string schedule_Playload = await Schedule_response.Content.ReadAsStringAsync();
+                    var SingleGame_objs = JsonConvert.DeserializeObject<GameData>(schedule_Playload);
+                    Events SingleEvents = new Events();
+                    SingleEvents.ID = GameID;
+                    int doubleheader;
+                    var FinalResult = " ";
+                    var datetime = SingleGame_objs.DateTimeUtc;
+                    var timeUtc = Convert.ToDateTime(datetime); ;
+                    TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+                    DateTime easternTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, easternZone);
+
+                    string date = easternTime.ToString("yyyyMMdd");
+
+                    var visit = SingleGame_objs.VisitorTeamAlias == null ? "null" : SingleGame_objs.VisitorTeamAlias;
+                    var home = SingleGame_objs.HomeTeamAlias == null ? "null" : SingleGame_objs.HomeTeamAlias;
+                    var leagues = SingleGame_objs.League;
+                    if (SingleGame_objs.League.ToUpper() == "MLB")
+                    {
+                        doubleheader = SingleGame_objs.DoubleHeaderGameNumber;
+                        FinalResult = date + "_" + leagues + "_" + home + "_" + visit + "_" + doubleheader;
+                    }
+                    else
+                    {
+
+                        FinalResult = date + "_" + leagues + "_" + home + "_" + visit;
+                    }
+                    var GameNotesList = db.GameHiveNotes.Where(ab => ab.GameDetails == FinalResult && ab.ClientID == ClientID).ToList();
+                    foreach (GameHiveNote abc in GameNotesList)
+                    {
+                        SingleGame_objs.Notes.Add(new Notes { Enabled = true, HeaderImage = null, HeaderText = null, HeaderTextBGColor = null, ID = abc.ID, NoteText = abc.Note });
+                    }
+                    SingleEvents.EventData = SingleGame_objs;
+
+                    return Json(SingleEvents);
+                }
+
+            }
+
             return "SingleGame";
 
         }
