@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69adaf8d7be145e095edc24362451caa" Name="Diagram1">
+        <EntityTypeShape EntityType="FoxTickModel.AlertPlaylist" Width="1.5" PointX="2.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Alert" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.auth_admin_log" Width="1.5" PointX="13" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.auth_content_type" Width="1.5" PointX="10.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Banner" Width="1.5" PointX="4.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.BreakingNew" Width="1.5" PointX="4.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.BreakingNewsExpirationMode" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.BreakingNewsType" Width="1.5" PointX="12.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientGame" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientNetwork" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Client" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientSport" Width="1.5" PointX="12.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientStatus" Width="1.5" PointX="14.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientTeam" Width="1.5" PointX="14.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Contributor" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ContributorType" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.dtproperty" Width="1.5" PointX="14.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.EditorialStatsList" Width="1.5" PointX="15.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.EditorialStatsListDetail" Width="1.5" PointX="14.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.EntryType" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Episode" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GameHiveNote" Width="1.5" PointX="16.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GameNote" Width="1.5" PointX="16.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GameOverride" Width="1.5" PointX="16.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Game" Width="1.5" PointX="7.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GameStat" Width="1.5" PointX="17.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GameStatus" Width="1.5" PointX="9.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GameStatusType" Width="1.5" PointX="11.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GroupAnimationType" Width="1.5" PointX="2.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.GroupGame" Width="1.5" PointX="10" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Group" Width="1.5" PointX="7.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ImporterLog" Width="1.5" PointX="18.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Importer" Width="1.5" PointX="4.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.LeaguesSetting" Width="1.5" PointX="18.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.LeaguesStanding" Width="1.5" PointX="18.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ManagementGame" Width="1.5" PointX="18.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Network" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Network1" Width="1.5" PointX="16.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.NewsAlert" Width="1.5" PointX="18.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.nLog" Width="1.5" PointX="20.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Note" Width="1.5" PointX="10" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.OnAirPlaylist" Width="1.5" PointX="20.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Player" Width="1.5" PointX="20.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.PlaylistClient" Width="1.5" PointX="9.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.PlaylistDetail" Width="1.5" PointX="11.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Playlist" Width="1.5" PointX="20.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.PlaylistType" Width="1.5" PointX="20.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Setting" Width="1.5" PointX="20.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.SettingsOption" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.SharedAlert" Width="1.5" PointX="13.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Show" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ShowContributor" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Sport" Width="1.5" PointX="15.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Standing" Width="1.5" PointX="17.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Status" Width="1.5" PointX="22.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.SuppressedGame" Width="1.5" PointX="2.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.sysdiagram" Width="1.5" PointX="22.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.TDProductionReport" Width="1.5" PointX="4.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.TickerFlowFile" Width="1.5" PointX="22.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.User" Width="1.5" PointX="10.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Ad" Width="1.5" PointX="6.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.AlertsOrder" Width="1.5" PointX="22.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientAlert" Width="1.5" PointX="22.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientLog" Width="1.5" PointX="22.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ClientNewsAlert" Width="1.5" PointX="22.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.DataSource" Width="1.5" PointX="19.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.ManagementGameNote" Width="1.5" PointX="21.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.NFLGameNote" Width="1.5" PointX="8.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.Team" Width="1.5" PointX="23.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoxTickModel.vwGamesCFB" Width="1.5" PointX="24.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="FoxTickModel.FK__auth_admi__conte__4CC05EF3" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK__auth_admi__user___4DB4832C" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_Contributor_ContributorType" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_ShowContributor_Contributor" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_Episode_Show" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_GameGroupGame" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_GroupGroupGame" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_Notes_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_Show_Network" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.FK_ShowContributor_Show" ManuallyRouted="false" />
+        <AssociationConnector Association="FoxTickModel.ClientShares" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
