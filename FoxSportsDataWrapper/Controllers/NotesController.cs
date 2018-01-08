@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -27,7 +29,19 @@ namespace FoxSportsDataWrapper.Controllers
             public string ID{ get; set; }
             public List<SingleNotes> Notes { get; set; }
             public CIDGames() { Notes = new List<SingleNotes>(); }
+        }
 
+        public class SDMData {
+
+            public Data data { get; set; }
+
+        }
+
+
+        public class Data {
+
+            public string Color { get; set; }
+            public string Image { get; set; }
 
         }
 
@@ -63,10 +77,19 @@ namespace FoxSportsDataWrapper.Controllers
                     foreach(GameHiveNote gn in NumberOfNotes)
                     {
                         SingleNotes ListOfNotes = new SingleNotes();
+                        HttpClient results_client = new HttpClient();
+                        HttpResponseMessage results_response = await results_client.GetAsync(ConfigurationSettings.AppSettings["SDMUrl"] + @"/api/team/" +gn.TeamCode+ "/" +gn.LeagueCode);
+                        if (results_response.IsSuccessStatusCode)
+                        {
+                            string results_responseBody = await results_response.Content.ReadAsStringAsync();
+                            var objs = JsonConvert.DeserializeObject<SDMData>(results_responseBody);
+                            ListOfNotes.HeaderTextBGColor = objs.data.Color;
+                            ListOfNotes.HeaderImage = objs.data.Image;
+
+
+                        }
                         ListOfNotes.ID = gn.ID;
-                        ListOfNotes.HeaderImage = null;
-                        ListOfNotes.HeaderText = null;
-                        ListOfNotes.HeaderTextBGColor = null;
+                        ListOfNotes.HeaderText = gn.Header;
                         ListOfNotes.NoteText = gn.Note;
 
                         SingleCID.Notes.Add(ListOfNotes);
@@ -85,13 +108,23 @@ namespace FoxSportsDataWrapper.Controllers
         {
             int[] empty_array = new int[0];
             SingleGameNotes SingleGame = new SingleGameNotes();
+
             var SingleNote = db.GameHiveNotes.Where(ab => ab.ID == ID).FirstOrDefault();
             if (SingleNote != null)
             {
+                HttpClient results_client = new HttpClient();
+                HttpResponseMessage results_response = await results_client.GetAsync(ConfigurationSettings.AppSettings["SDMUrl"] + @"/api/team/" + SingleNote.TeamCode + "/" + SingleNote.LeagueCode);
+                if (results_response.IsSuccessStatusCode)
+                {
+                    string results_responseBody = await results_response.Content.ReadAsStringAsync();
+                    var objs = JsonConvert.DeserializeObject<SDMData>(results_responseBody);
+                    SingleGame.HeaderTextBGColor = objs.data.Color;
+                    SingleGame.HeaderImage = objs.data.Image;
+
+
+                }
                 SingleGame.ID = SingleNote.ID;
-                SingleGame.HeaderImage = null;
-                SingleGame.HeaderText = null;
-                SingleGame.HeaderTextBGColor = null;
+                SingleGame.HeaderText = SingleNote.Header;
                 SingleGame.NoteText = SingleNote.Note;
                 return Json(SingleGame);
             }
